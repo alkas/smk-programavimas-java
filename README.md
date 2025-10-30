@@ -23,3 +23,42 @@ c) Į ATM klasę pridėkite metodą withdraw(int pin, double sum), kuris kreipsi
 
 ### 2 etapas
 
+Visos sąskaitos yra dviejų tipų:
+- įprastos;
+- lengvatinės.
+
+a) Reikia realizuoti metodą withdraw (išsiimti iš sąskaitos (suma)) taip, kad nuimant tam tikrą
+sumą iš įprastos sąskaitą papildomai būtu nuskaičiuoti 5% nuo nurodytos sumos, o atsiimant iš lengvatinės
+sąskaitos – tik 1%.
+Tam reikia:
+- Account klasę padaryti abstrakčia; (1)
+- Account klasėje pridėti abstraktų metodą withdraw(sum); (1)
+- sukurti dvi išvestines klases RegularAccount ir PreferentialAccount, paveldimas iš Account;
+(1)
+- RegularAccount ir PreferentialAccount klasėse užkloti withdraw(sum) metodą. (2)
+Pridėkite dvi įprastas ir dvi lengvatines sąskaitas prie konkretaus banko ir nustatyti reikšmes. Parodykite
+kiekvienos sąskaitos likutį nurodytame banke, tada išimkite iš kiekvienos sąskaitos tam tikrą sumą ir vėl
+parodykite kiekvienos sąskaitos likutį. (3)
+
+b) Surikiuokite sąskaitas pagal likutį didėjimo tvarka. Gautą rezultatą išveskite į ekraną. (2)
+
+### 3 etapas
+
+Pakoreguokite savo individualios užduoties kodą. Pradiniai duomenys yra tekstiniame faile. Rezultatų faile
+pradiniai duomenys ir apskaičiuoti atsakymai pateikiami lentelėmis.
+
+a) Sukurti Read klasę, kurioje bus skaitymo metodas. (2)
+Nuskaityme turite atsižvelgti į išvetinias klases. Pagrindinėje klasėje turi atsirasti papildomas
+kintamasis(mano pavyzdyje typeOfWork). Jeigu bus per sunku su paveldėjimu, naikinate jį. Tokiu atveju -2
+balai nuo visos uždoties..
+
+- Sukurkite Print klasę, kurioje bus visi spausdinimo metodai. (2)
+- Sukurkite Calculation klasę, kurioje bus visi skaičiavimai.
+- Pagrindinę klasę (mano pavyzdyje Firm) pakeiskite į Record. (0,5)
+- Surikiuokite duomenis pagal pasirinktą vieną kriterijų ir atspausdinkite.(1)
+- Pašalinkite iš sąrašo norimą elementą. Atspausdinkite naują sąrašą.(1)
+- Sąraše suraskite pasirinktą elementą ir pakeiskite vieno iš jo kintamųjų reikšmę, bei atspausdinkite tą
+elementą.(1)
+- Vieną pasirinką konstruktorių, metodą ar klasę padarykite generic.(0,5)
+- Sudarykite naują sąrašą sugrupuodami duomenis pagal pasirinktą kriterijų(mano pavydyje pagal
+Departament) be pasikartojimų ir sukurkite vieną bendrą kintamąjį. Naudoti Map kolekciją.(2)
