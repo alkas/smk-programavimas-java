@@ -44,6 +44,13 @@ b) Surikiuokite sąskaitas pagal likutį didėjimo tvarka. Gautą rezultatą iš
 
 ### 3 etapas
 
+a) Perdaryti savo savarankišką užduotį panaudojant mažiausiai dvi kolekcijas (4 balai (rikiavimas, pridėjimas)).
+b) Iš kolekcijos  pašalinti pasirinktą elementą (2 balai).
+c) Kolekcijoje pakeisti pasirinktą elementą (2 balai).
+d) Panaudoti dar du norimus kolekcijos metodus (2 balai)
+
+### 4 etapas
+
 Pakoreguokite savo individualios užduoties kodą. Pradiniai duomenys yra tekstiniame faile. Rezultatų faile
 pradiniai duomenys ir apskaičiuoti atsakymai pateikiami lentelėmis.
 
