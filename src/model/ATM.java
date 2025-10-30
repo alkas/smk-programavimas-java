@@ -16,4 +16,12 @@ public class ATM {
     // Setters
     public void setIdNumber(String idNumber) { this.idNumber = idNumber; }
     public void setAddress(String address) { this.address = address; }
+
+    @Override
+    public String toString() {
+        return "ATM{" +
+                "idNumber='" + idNumber + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

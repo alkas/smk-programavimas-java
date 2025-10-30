@@ -19,4 +19,13 @@ public class Account {
     // Setters
     public void setPin(String pin) { this.pin = pin; }
     public void setNumber(String number) { this.number = number; }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "pin='" + pin + '\'' +
+                ", number='" + number + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
 }
