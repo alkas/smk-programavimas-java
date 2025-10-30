@@ -4,11 +4,13 @@ public abstract class Account {
     private  String pin;
     private String number;
     private double balance;
+    private ATM atm;
 
-    public Account(String pin, String number, double balance) {
+    public Account(String number, String pin, double balance, ATM atm) {
         this.pin = pin;
         this.number = number;
         this.balance = balance;
+        this.atm = atm;
     }
 
     // Getters
@@ -21,7 +23,6 @@ public abstract class Account {
     public void setNumber(String number) { this.number = number; }
 
     // Methods
-    // -------------------------------
     public abstract String getAccountType();
 
     public abstract double calculateFee(double amount);

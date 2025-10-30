@@ -1,22 +1,11 @@
 package model;
 
-public class Bank {
-    private String name;
+public record Bank(String name) {
 
-    public Bank(String name) {
-        this.name = name;
+    public Bank {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Banko pavadinimas negali būti tuščias");
+        }
     }
 
-    // Getters
-    public String getName() { return name; }
-
-    // Setters
-    public void setName(String name) { this.name = name; }
-
-    @Override
-    public String toString() {
-        return "Bank{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }
