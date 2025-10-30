@@ -12,4 +12,11 @@ public class Bank {
 
     // Setters
     public void setName(String name) { this.name = name; }
+
+    @Override
+    public String toString() {
+        return "Bank{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

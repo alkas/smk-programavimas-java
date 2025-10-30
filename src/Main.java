@@ -14,5 +14,19 @@ public class Main {
         ATM atm1 = new ATM("atm1", "Taikos pr.61, Klaipėda");
         ATM atm2 = new ATM("atm2", "Ozo g. 25, Vilnius");
         ATM atm3 = new ATM("atm3", "Aido g. 8, Šiauliai");
+
+        System.out.println("Bankai:");
+        System.out.println(seb.toString());
+
+        System.out.println("Sąskaitos:");
+        System.out.println(account1.toString());
+        System.out.println(account2.toString());
+        System.out.println(account3.toString());
+        System.out.println(account4.toString());
+
+        System.out.println("Bankomatai:");
+        System.out.println(atm1.toString());
+        System.out.println(atm2.toString());
+        System.out.println(atm3.toString());
     }
 }
