@@ -11,7 +11,7 @@ a) Sumodeliuokite bankomato struktūrą:
 |  Account | number(get, set)<br/>pin(get, set)<br/>balance(get) |
 | ATM | idNumber(get, set)<br/>address (get, set) |
 
-b) Sukurkite vieną Bank klasės objektą, du Account klasės objektus ir tris objektus - ATM, nustatyti reikšmes savybėms ir išvesti į ekraną.
+Sukurkite vieną Bank klasės objektą, du Account klasės objektus ir tris objektus - ATM, nustatyti reikšmes savybėms ir išvesti į ekraną.
 
 b) Tarpusavyje susiekite klases Bank, Account ir ATM, kad kiekvienas bankas turėtų sąskaitas ir bankomatus, kiekviena sąskaita turėtų informaciją, kokiame banke ji yra, kiekvienas bankomatas – kokį banką jis aptarnauja:
 - Į Bank klasę įtraukite savybes accounts (get) (masyvas) ir cashMachines (get) (masyvas). Taip pat sukurti metodus addAccount ir addATM ;
