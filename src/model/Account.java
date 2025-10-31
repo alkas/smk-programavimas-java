@@ -17,6 +17,7 @@ public abstract class Account {
     public String getPin() { return pin; }
     public String getNumber() { return number; }
     public double getBalance() { return balance; }
+    public ATM getATM() { return atm; }
 
     // Setters
     public void setPin(String pin) { this.pin = pin; }
@@ -37,6 +38,10 @@ public abstract class Account {
 
     public boolean hasSuficientFunds(double amount) {
         return balance >= amount;
+    }
+
+    public String getFormattedBalance() {
+        return String.format("%.2f €", balance).replace(".", ",");
     }
 
     @Override
