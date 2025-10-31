@@ -12,9 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Read {
+    private final String fileName;
 
-    // Nuskaito banko ir sąskaitų informaciją iš failo
-    public List<Account> readAccountsFromFile(String fileName) {
+    public Read(String fileName) {
+        this.fileName = fileName;
+    }
+
+    /**
+     *  Grąžina Account objektų sąrašą iš nuskaitytų failo eilučių
+     */
+    public List<Account> readAccountsFromFile() {
         List<Account> accounts = new ArrayList<>();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -37,7 +44,9 @@ public class Read {
         return accounts;
     }
 
-    // Nuskaitytos eilutės duomenis įrašo į objektą
+    /**
+     *  Grąžina objektą su duomenimis iš nuskaitytos eilutės
+     */
     private Account parseLine(String line) {
         String[] parts = line.split(";");
 

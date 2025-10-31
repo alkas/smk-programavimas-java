@@ -7,20 +7,29 @@ public class Column<T> {
 
     public Column(String header, int width, ValueGetter<T> valueGetter) {
         this.header = header;
-        this.width = width;
+        this.width = Math.max(width, header.length() + 2);
         this.valueGetter = valueGetter;
     }
 
-    public String getHeader() {
-        return String.format("| %-" + width + "s | ", header);
+    /**
+     *  Grąžina stulpelio antraštės tekstą
+     */
+    public String getColumnHeader() {
+        return String.format("%-" + width + "s", header);
     }
 
-    public String getSeparator() {
-        return "|" + "-".repeat(width + 2);
+    /**
+     *  Grąžina lentelės horizontalią liniją tekstiniu formatu
+     */
+    public String getColumnSeparator(char separator) {
+        return String.valueOf(separator).repeat(width);
     }
 
-    public String getValue(T object) {
+    /**
+     *  Grąžina stulpelio reikšmę tekstiniu formatu
+     */
+    public String getColumnValue(T object) {
         String value = valueGetter.getValue(object);
-        return String.format("| %-" + width + "s | ", value);
+        return String.format("%-" + width + "s", value);
     }
 }
