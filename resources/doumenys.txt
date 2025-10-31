@@ -1,0 +1,4 @@
+Swedbank
+LT123456; 1234; 1500 €; 001; Gedimino pr. 5; Regular
+LT654321; 5678; 2500 €; 002; Laisvės al. 10; Preferential
+LT987654; 9876; 3000 €; 003; Vilniaus g. 15; Regular
