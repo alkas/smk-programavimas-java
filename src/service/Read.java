@@ -1,4 +1,4 @@
-package utility;
+package service;
 
 import model.ATM;
 import model.Account;
@@ -6,22 +6,34 @@ import model.PreferentialAccount;
 import model.RegularAccount;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Read {
-    private final String fileName;
 
-    public Read(String fileName) {
-        this.fileName = fileName;
+    /**
+     *  Nuskaito failo eilutes ir grąžina eilučių sąrašą
+     */
+    public List<String> readAllLines(String fileName) {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch(IOException ex) {
+            System.out.println("Failo nuskaitymo klaida: " + ex.getMessage());
+        }
+        return lines;
     }
 
     /**
      *  Grąžina Account objektų sąrašą iš nuskaitytų failo eilučių
      */
-    public List<Account> readAccountsFromFile() {
+    public List<Account> readAccountsFromFile(String fileName) {
         List<Account> accounts = new ArrayList<>();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
