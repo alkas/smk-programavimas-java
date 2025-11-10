@@ -16,4 +16,15 @@ public record Bank(String name, List<Account> accounts) {
         this(name, Collections.emptyList());
     }
 
+    /**
+     * Suranda sąskaitą pagal numerį.
+     */
+    public Account findAccountByNumber(String accountNumber) {
+        for (Account account : accounts) {
+            if (account.getNumber().equals(accountNumber)) {
+                return account;
+            }
+        }
+        return null;
+    }
 }

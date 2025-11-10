@@ -45,7 +45,7 @@ public abstract class Account {
     }
 
     public int compareTo(Account other) {
-        return Double.compare(balance, other.balance);
+        return Double.compare(other.balance, balance);
     }
 
     public String toString() {

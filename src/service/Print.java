@@ -12,7 +12,14 @@ public class Print {
     private static final char INTERSECTION_CHAR = '+';
     private final String filename;
 
-    public Print(String filename) { this.filename = filename; }
+    public Print(String filename) {
+        this.filename = filename;
+        try {
+            new BufferedWriter(new FileWriter(filename));
+        } catch (IOException e) {
+            System.out.println("Klaida: " + e.getMessage());
+        }
+    }
 
     /**
      * Spausdina sąskaitų lentelę į tekstinį failą
@@ -24,7 +31,7 @@ public class Print {
     ) {
 
         // try-with-resources blokas automatiškai uždaro BufferedWriter
-        try (BufferedWriter out = new BufferedWriter(new FileWriter(filename))) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))) {
             out.newLine();
             out.write(tableHeaderLine(tableHeader));
             out.newLine();
@@ -52,9 +59,24 @@ public class Print {
             out.write(separatorLine);
             out.newLine();
 
-        } catch (IOException ex) {
+        } catch (IOException e) {
             System.out.println("Nepavyko įrašyti failo: " + filename);
-            System.out.println("Klaida: " + ex.getMessage());
+            System.out.println("Klaida: " + e.getMessage());
+        }
+    }
+
+    /**
+     *  Spausdina vieną sumą
+     */
+    public void printAmount(String label, double amount) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))) {
+            out.newLine();
+            out.write(label + ": ");
+            out.write(String.format("%.2f €", amount).replace(".", ","));
+            out.newLine();
+        }  catch (IOException e) {
+            System.out.println("Nepavyko įrašyti failo: " + filename);
+            System.out.println("Klaida: " + e.getMessage());
         }
     }
 
