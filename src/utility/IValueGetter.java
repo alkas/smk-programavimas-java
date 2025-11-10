@@ -1,5 +1,5 @@
 package utility;
 
-public interface ValueGetter<T> {
+public interface IValueGetter<T> {
     String getValue(T value);
 }

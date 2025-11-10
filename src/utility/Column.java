@@ -3,11 +3,11 @@ package utility;
 public class Column<T> {
     private String header;
     private int width;
-    private ValueGetter<T> valueGetter;
+    private IValueGetter<T> valueGetter;
 
-    public Column(String header, int width, ValueGetter<T> valueGetter) {
+    public Column(String header, int width, IValueGetter<T> valueGetter) {
         this.header = header;
-        this.width = Math.max(width, header.length() + 2);
+        this.width = Math.max(width, header.length()) + 2;
         this.valueGetter = valueGetter;
     }
 
@@ -15,7 +15,8 @@ public class Column<T> {
      *  Grąžina stulpelio antraštės tekstą
      */
     public String getColumnHeader() {
-        return String.format("%-" + width + "s", header);
+        int padding = (width - header.length()) / 2;
+        return String.format("%-" + width + "s", " ".repeat(padding) + header);
     }
 
     /**
@@ -30,6 +31,6 @@ public class Column<T> {
      */
     public String getColumnValue(T object) {
         String value = valueGetter.getValue(object);
-        return String.format("%-" + width + "s", value);
+        return String.format("%-" + width + "s", " " + value);
     }
 }

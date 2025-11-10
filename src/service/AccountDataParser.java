@@ -36,7 +36,7 @@ public class AccountDataParser {
     }
 
     /**
-     *  Pakeičia balanso formatą
+     *  Pakeičia balansą į double
      */
     private double parseBalance(String balanceString) {
         String amountString = balanceString

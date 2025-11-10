@@ -1,6 +1,9 @@
+import model.Account;
 import model.Bank;
 import service.BankDataLoader;
-import service.Read;
+import service.BankManager;
+import service.Print;
+import utility.ColumnConfigurations;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,6 +13,18 @@ public class Main {
         System.out.println("=== NUSKAITYTI DUOMENYS ===");
         System.out.println("Bankas: " + swedbank.name());
 
+        Print printer = new Print("resources//rezultatai.txt");
+
+        printer.printAccountsTable(
+                "Banko " + swedbank.name() + " sąskaitų sąrašas",
+                swedbank.accounts(),
+                ColumnConfigurations.getFullAccountColumns());
+
+        BankManager manager = new BankManager(swedbank);
+
+
     }
+
+
 }
 

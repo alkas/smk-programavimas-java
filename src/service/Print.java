@@ -18,13 +18,18 @@ public class Print {
      * Spausdina sąskaitų lentelę į tekstinį failą
      */
     public void printAccountsTable(
+            String tableHeader,
             List<Account> accounts,
             List<Column<Account>> columns
-    ) throws IOException {
+    ) {
 
         // try-with-resources blokas automatiškai uždaro BufferedWriter
         try (BufferedWriter out = new BufferedWriter(new FileWriter(filename))) {
-            // lentelės vertikali linija
+            out.newLine();
+            out.write(tableHeaderLine(tableHeader));
+            out.newLine();
+
+            // lentelės horizontali linija
             String separatorLine = buildSeparatorLine(columns);
             out.write(separatorLine);
             out.newLine();
@@ -39,7 +44,7 @@ public class Print {
 
             for (Account account : accounts) {
                 // reikšmių eilutė
-                String row = buildRow(columns, account);
+                String row = buildValuesRow(columns, account);
                 out.write(row);
                 out.newLine();
             }
@@ -82,13 +87,20 @@ public class Print {
     /**
      *  Grąžina sugeneruotą lentelės reikšmių eilutę
      */
-    private <T> String buildRow(List<Column<T>> columns, T objectOfValues) {
+    private <T> String buildValuesRow(List<Column<T>> columns, T objectOfValues) {
         StringBuilder row = new StringBuilder();
         for (Column<T> column : columns) {
             row.append(VERTICAL_CHAR).append(column.getColumnValue(objectOfValues));
         }
         row.append(VERTICAL_CHAR);
         return row.toString();
+    }
+
+    /**
+     *  Grąžina lentelės antraštės tekstą
+     */
+    private String tableHeaderLine(String tableHeader) {
+        return "+".repeat(10) + " " + tableHeader + " " + "+".repeat(10);
     }
 
 }
