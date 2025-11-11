@@ -26,7 +26,7 @@ public class BankDataLoader {
             throw new IllegalArgumentException("Failas tuščias.");
 
         String bankName = lines.get(0);
-        List<Account>  accounts = parseAccounts(lines.subList(1, lines.size()));
+        List<Account> accounts = parseAccounts(lines.subList(1, lines.size()));
 
         return new Bank(bankName, accounts);
     }

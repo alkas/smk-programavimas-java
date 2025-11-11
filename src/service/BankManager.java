@@ -40,11 +40,18 @@ public class BankManager {
     }
 
     /**
+     *  Randa sąskaitą pagal jos numerį
+     */
+    public Account getAccount(String number) {
+        return accountsByNumber.get(number);
+    }
+
+    /**
      * Pašalina sąskaitą pagal jos numerį.
     */
     public boolean removeAccountByNumber(String accountNumber) {
 
-        Account accountToRemove = accountsByNumber.get(accountNumber);
+        Account accountToRemove = getAccount(accountNumber);
 
         if (accountToRemove == null) {
             return false;
@@ -55,10 +62,21 @@ public class BankManager {
     }
 
     /**
+     *  Pakeičia sąskaitos numerį
+     */
+    public Account updateAccountNumber(String number, String newNumber) {
+        Account accountToChange = getAccount(number);
+        if (accountToChange != null) {
+            accountToChange.setNumber(newNumber);
+        }
+        return accountToChange;
+    }
+
+    /**
      *  Pakeičia sąskaitos balansą
      */
     public Account updateAccountBalance(String accountNumber, double newBalance) {
-        Account accountToChange = accountsByNumber.get(accountNumber);
+        Account accountToChange = getAccount(accountNumber);
         if (accountToChange != null) {
             accountToChange.setBalance(newBalance);
         }
@@ -73,5 +91,21 @@ public class BankManager {
         for (Account account : currentBank.accounts()) {
             accountsByNumber.put(account.getNumber(), account);
         }
+    }
+
+    /**
+     *  Nurašo sumą nuo visų sąskaitų iš karto,
+     *  jei nors vienoje sąskaitoje trūks lėšų, operacija nebus atlikta.
+     */
+    public boolean withdrawFromAllAccounts(double sum) {
+        Calculation calculator = new Calculation();
+        if (!calculator.allAccountsHaveSufficientFunds(accounts, sum)) {
+            return false;
+        }
+        for (Account account : accounts) {
+            double amount = calculator.calculateWithdrawalAmount(account, sum);
+            account.withdraw(amount);
+        }
+        return true;
     }
 }

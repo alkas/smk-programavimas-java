@@ -20,7 +20,7 @@ public class Column<T> {
     }
 
     /**
-     *  Grąžina lentelės horizontalią liniją tekstiniu formatu
+     *  Grąžina stulpelio horizontalią liniją tekstiniu formatu
      */
     public String getColumnSeparator(char separator) {
         return String.valueOf(separator).repeat(width);

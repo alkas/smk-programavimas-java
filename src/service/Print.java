@@ -1,6 +1,7 @@
 package service;
 
 import model.Account;
+import utility.MoneyFormatter;
 import utility.Column;
 
 import java.io.*;
@@ -14,20 +15,21 @@ public class Print {
 
     public Print(String filename) {
         this.filename = filename;
-        try {
-            new BufferedWriter(new FileWriter(filename));
+        try(BufferedWriter out = new BufferedWriter(new FileWriter(filename))) {
+            out.write("GALUTINĖ UŽDUOTIS (Erikas Stanys)");
+            out.newLine();
         } catch (IOException e) {
             System.out.println("Klaida: " + e.getMessage());
         }
     }
 
     /**
-     * Spausdina sąskaitų lentelę į tekstinį failą
+     * Spausdina lentelę
      */
-    public void printAccountsTable(
+    public <T> void printTable(
             String tableHeader,
-            List<Account> accounts,
-            List<Column<Account>> columns
+            List<T> objects,
+            List<Column<T>> columns
     ) {
 
         // try-with-resources blokas automatiškai uždaro BufferedWriter
@@ -49,9 +51,9 @@ public class Print {
             out.write(separatorLine);
             out.newLine();
 
-            for (Account account : accounts) {
+            for (T object : objects) {
                 // reikšmių eilutė
-                String row = buildValuesRow(columns, account);
+                String row = buildValuesRow(columns, object);
                 out.write(row);
                 out.newLine();
             }
@@ -72,7 +74,7 @@ public class Print {
         try (BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))) {
             out.newLine();
             out.write(label + ": ");
-            out.write(String.format("%.2f €", amount).replace(".", ","));
+            out.write(MoneyFormatter.format(amount));
             out.newLine();
         }  catch (IOException e) {
             System.out.println("Nepavyko įrašyti failo: " + filename);

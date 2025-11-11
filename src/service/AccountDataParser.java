@@ -15,7 +15,7 @@ public class AccountDataParser {
     }
 
     /**
-     *  Sukuria Account objektą
+     *  Iš duomenų teksto eilutėje sukuria Account objektą
      */
     public Account parseAccountLine(String line) {
         String[] parts = line.split(";");

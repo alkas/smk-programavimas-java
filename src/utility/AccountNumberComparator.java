@@ -5,7 +5,7 @@ import model.Account;
 import java.util.Comparator;
 
 public class AccountNumberComparator implements Comparator<Account> {
-    public int compare(Account o1, Account o2) {
-        return o1.getNumber().compareTo(o2.getNumber());
+    public int compare(Account a1, Account a2) {
+        return a1.getNumber().compareTo(a2.getNumber());
     }
 }
