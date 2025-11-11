@@ -6,6 +6,7 @@ import service.Calculation;
 import service.Print;
 import utility.ColumnConfigurations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -41,12 +42,32 @@ public class Main {
 
         BankManager manager = new BankManager(originalBank);
 
-        boolean removed = manager.removeAccountByNumber("LT347654");
-        System.out.println(removed);
-        printer.printAccountsTable(
-                "Banko " + manager.getCurrentBank().name() + " sąskaitų sąrašas po sąskaitos pašalinimo",
-                manager.getAccounts(),
-                ColumnConfigurations.getFullAccountColumns());
+        String accountToRemove = "LT347654";
+        boolean removed = manager.removeAccountByNumber(accountToRemove);
+        if (removed) {
+            printer.printAccountsTable(
+                    "Banko " + manager.getCurrentBank().name() + " sąskaitų sąrašas po sąskaitos pašalinimo",
+                    manager.getAccounts(),
+                    ColumnConfigurations.getFullAccountColumns());
+        } else {
+            printer.printMessage("Nepavyko pašalinti sąskaitos " + accountToRemove);
+        }
+
+
+        manager.discardChanges();
+        String accountToChange = "LT347654";
+        double newBalance = 5000d;
+        Account changedAccount = manager.updateAccountBalance(accountToChange, newBalance);
+        if (changedAccount != null) {
+            List<Account> accountsToPrint = new ArrayList<>();
+            accountsToPrint = calculator.selectAccountForPrint(changedAccount, accountsToPrint);
+            printer.printAccountsTable(
+                    "Banko " + manager.getCurrentBank().name() + " sąskaitų sąrašas po sąskaitos pašalinimo",
+                    accountsToPrint,
+                    ColumnConfigurations.getFullAccountColumns());
+        }
+
+        //String accountToUpdate = "LT347654";
     }
 
 

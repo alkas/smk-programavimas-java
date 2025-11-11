@@ -27,6 +27,16 @@ public class Calculation {
     }
 
     /**
+     *  Parenkama sąskaita spausdinimui
+     */
+    public List<Account> selectAccountForPrint(Account selectedAccount, List<Account> accountsForPrint) {
+        if (!accountsForPrint.contains(selectedAccount)) {
+            accountsForPrint.add(selectedAccount);
+        }
+        return accountsForPrint;
+    }
+
+    /**
      *  Apskaičiuoja bendrą visų sąskaitų balansą
      */
     public double calculateTotalbalance(List<Account> accounts) {

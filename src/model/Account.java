@@ -25,6 +25,7 @@ public abstract class Account {
     // Setters
     public void setPin(String pin) { this.pin = pin; }
     public void setNumber(String number) { this.number = number; }
+    public void setBalance(double balance) { this.balance = balance; }
 
     public abstract double calculateFee(double amount);
 

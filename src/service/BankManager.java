@@ -43,7 +43,7 @@ public class BankManager {
      * Pašalina sąskaitą pagal jos numerį.
     */
     public boolean removeAccountByNumber(String accountNumber) {
-        // Patikriname, ar tokia sąskaita egzistuoja
+
         Account accountToRemove = accountsByNumber.get(accountNumber);
 
         if (accountToRemove == null) {
@@ -55,13 +55,23 @@ public class BankManager {
     }
 
     /**
-     *  Sukuria Hashmap sąskaitų kolekciją
+     *  Pakeičia sąskaitos balansą
      */
-    private HashMap<String, Account> createHashMap(List<Account> accounts) {
-        HashMap<String, Account> accountsByNumber = new HashMap<>();
-        for (Account account : accounts) {
+    public Account updateAccountBalance(String accountNumber, double newBalance) {
+        Account accountToChange = accountsByNumber.get(accountNumber);
+        if (accountToChange != null) {
+            accountToChange.setBalance(newBalance);
+        }
+        return accountToChange;
+    }
+
+    /**
+     *  Atstato sąskaitų sąrašą
+     */
+    public void discardChanges() {
+        accounts = new ArrayList<>(currentBank.accounts());
+        for (Account account : currentBank.accounts()) {
             accountsByNumber.put(account.getNumber(), account);
         }
-        return accountsByNumber;
     }
 }

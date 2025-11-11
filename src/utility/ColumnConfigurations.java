@@ -36,4 +36,5 @@ public class ColumnConfigurations {
                     public String getValue(Account object) { return object.getAccountType(); }
                 }));
     }
+
 }

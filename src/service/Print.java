@@ -81,6 +81,20 @@ public class Print {
     }
 
     /**
+     *  Spausdina prtanešimą
+     */
+    public void printMessage(String message) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(filename, true))) {
+            out.newLine();
+            out.write(message);
+            out.newLine();
+        }  catch (IOException e) {
+            System.out.println("Nepavyko įrašyti failo: " + filename);
+            System.out.println("Klaida: " + e.getMessage());
+        }
+    }
+
+    /**
      *  Grąžina sugeneruotą horizontalią liniją
      */
     private <T> String buildSeparatorLine(List<Column<T>> columns) {
